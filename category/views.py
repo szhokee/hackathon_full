@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from category.models import Category
+from category.models import Category, Soup
 from rest_framework import viewsets
-from category.serializers import CategorySerializer
+from category.serializers import CategorySerializer, SoupSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 class CategoryAPIView(viewsets.ModelViewSet):
@@ -10,4 +10,9 @@ class CategoryAPIView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 
-    
+class ProductModelViewSet(viewsets.ModelViewSet):
+    queryset = Soup.objects.all()
+    serializer_class = SoupSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
