@@ -9,8 +9,8 @@ class TicketSerializer(serializers.ModelSerializer):
         model = Ticket
         fields = '__all__'
 
-class CategorySerializer(serializers.ModelSerializer):
-    owner = serializers.EmailField(required=False)
-    class Meta:
-        model = Category
-        fields = '__all__'
+# class CategorySerializer(serializers.ModelSerializer):
+#     owner = serializers.EmailField(required=False)
+#     class Meta:
+#         model = Category
+#         fields = '__all__'

@@ -4,7 +4,7 @@ from category.views import *
 
 router = DefaultRouter()
 router.register('category', CategoryAPIView)
-router.register('events', EventModelViewSet)
+
 
 
 urlpatterns = [

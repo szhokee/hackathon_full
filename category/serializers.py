@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from category.models import Category, Event
+from category.models import Category
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -9,10 +9,6 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class EventSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Event
-        fields = '__all__'
+
 
 

@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     # my apps
     'account',
     'category',
+    'event',
+    'feedback',
     'ticket',
 ]
 

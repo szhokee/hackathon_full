@@ -4,4 +4,4 @@ from ticket.models import Ticket, Category
 
 
 admin.site.register(Ticket)
-admin.site.register(Category)
+# admin.site.register(Category)

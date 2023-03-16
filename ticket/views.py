@@ -4,7 +4,8 @@ from rest_framework.response import Response
 from rest_framework import status, generics, viewsets, mixins
 from rest_framework.views import APIView
 
-from ticket.models import Ticket, Category
+from category.models import Category
+from ticket.models import Ticket
 from ticket.serializers import TicketSerializer, CategorySerializer
 from ticket.tasks import big_function
 
