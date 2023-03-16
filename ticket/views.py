@@ -4,8 +4,10 @@ from rest_framework.response import Response
 from rest_framework import status, generics, viewsets, mixins
 from rest_framework.views import APIView
 
+
 from category.models import Category
 from ticket.models import Ticket
+
 from ticket.serializers import TicketSerializer, CategorySerializer
 from ticket.tasks import big_function
 
@@ -134,3 +136,4 @@ def get_hello(request):
     # import time 
     # time.sleep(10)
     return Response('HELLO!!!')
+
