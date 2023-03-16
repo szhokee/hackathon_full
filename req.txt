@@ -4,11 +4,13 @@ psycopg2-binary
 python-decouple
 pillow
 djangorestframework-simplejwt
+drf-yasg
+django-filters
+
 dj-config-url 
 
 django-filter
 pillow
-drf-yasg
 
 django-cors-headers
 
