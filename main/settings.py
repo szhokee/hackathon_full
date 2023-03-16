@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'account',
     'ticket',
     'category',
+    'event',
+    'feedback',
+    'ticket',
 ]
 
 MIDDLEWARE = [

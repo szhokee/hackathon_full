@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from category.models import Category, Event
+from category.models import Category
 from rest_framework import viewsets
-from category.serializers import CategorySerializer, EventSerializer
+from category.serializers import CategorySerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
 
 class CategoryAPIView(viewsets.ModelViewSet):
     queryset = Category.objects.all()
@@ -10,9 +11,4 @@ class CategoryAPIView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 
-class EventModelViewSet(viewsets.ModelViewSet):
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
