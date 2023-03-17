@@ -10,6 +10,11 @@ super:
 
 test:
 	python3 manage.py test
+
+git:
+	git add .
+	git commit -m 'comment'
+	git push origin iman
 	
 celery:
 	celery -A shop worker -l debug
