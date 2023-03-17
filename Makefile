@@ -16,5 +16,8 @@ git:
 	git commit -m 'comment'
 	git push origin iman
 	
+celery_beat:
+	celery -A main beat
+
 celery:
-	celery -A shop worker -l debug
+	celery -A main worker -l debug

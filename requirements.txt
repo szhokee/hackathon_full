@@ -12,5 +12,5 @@ django-filter
 
 django-cors-headers
 
-redis
 celery
+redis
