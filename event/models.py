@@ -21,7 +21,6 @@ class Event(models.Model):
     duration = models.IntegerField()
     geo = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    # image = models.ImageField(null=True, upload_to='category/')
     image = models.ImageField(upload_to='event/')
     description = models.TextField()
 
