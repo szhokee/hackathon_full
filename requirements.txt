@@ -5,12 +5,10 @@ python-decouple
 pillow
 djangorestframework-simplejwt
 drf-yasg
-django-filters
 
 dj-config-url 
 
 django-filter
-pillow
 
 django-cors-headers
 

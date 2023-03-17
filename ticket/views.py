@@ -8,8 +8,9 @@ from rest_framework.views import APIView
 from category.models import Category
 from ticket.models import Ticket
 
-from ticket.serializers import TicketSerializer, CategorySerializer
+from ticket.serializers import TicketSerializer
 from ticket.tasks import big_function
+from category.serializers import CategorySerializer
 
 class CategoryAPIView(viewsets.ModelViewSet):
     queryset = Category.objects.all()
