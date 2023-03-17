@@ -21,7 +21,7 @@ class Like(models.Model):
 
     def __str__(self) -> str:
         return f'{self.owner} liked - {self.event.title}'
-    
+
 
 class Rating(models.Model):
 
@@ -43,7 +43,6 @@ class Rating(models.Model):
 
     def __str__(self):
         return f'{self.owner} - {self.event.title}'
-
 
 class Favorite(models.Model):
     owner = models.ForeignKey(

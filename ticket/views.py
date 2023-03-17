@@ -4,7 +4,6 @@ from rest_framework.response import Response
 from rest_framework import status, generics, viewsets, mixins
 from rest_framework.views import APIView
 
-
 from category.models import Category
 from ticket.models import Ticket
 
@@ -18,9 +17,6 @@ class CategoryAPIView(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-
-
-
 @api_view(['GET'])
 def get_product(request):
     """
@@ -31,7 +27,6 @@ def get_product(request):
     # print(serializer.data)
     return Response(serializer.data)
 
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def post_product(request):
@@ -41,9 +36,6 @@ def post_product(request):
     serializer.save(owner=request.user)
 
     return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-
-# CLASSSSSSS
 
 class TicketListGenericView(generics.ListAPIView):
     queryset = Ticket.objects.all()
@@ -57,8 +49,6 @@ class TicketCreateGenericView(generics.CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-
-
 #GENERIIIC
 
 class TicketListCreateGenericView(generics.ListCreateAPIView):
@@ -68,8 +58,6 @@ class TicketListCreateGenericView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-
-
 
 class TicketAPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -87,8 +75,6 @@ class TicketAPIView(APIView):
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
         # return Response('pooost')
-
-
 
 #Viewset
 
@@ -138,4 +124,3 @@ def get_hello(request):
     # import time 
     # time.sleep(10)
     return Response('HELLO!!!')
-

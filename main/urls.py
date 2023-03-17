@@ -18,10 +18,18 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('account/', include('account.urls')),
     path('swagger/', schema_view.with_ui('swagger')),
     path('category/', include('category.urls')),
     path('event/', include('ticket.urls')),
     path('feedback/', include('feedback.urls')),
     path('ticket/', include('ticket.urls'))      
+
+    path('api/v1/account/', include('account.urls')),
+    path('api/v1/ticket/', include('ticket.urls')),
+    path('api/v1/category/', include('category.urls')),
+    path('api/v1/event/', include('ticket.urls')),
+    path('api/v1/feedback/', include('feedback.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

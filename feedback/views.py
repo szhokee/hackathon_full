@@ -5,7 +5,6 @@ from feedback.models import Favorite
 from feedback.serializers import FavoriteSerializer
 from rest_framework.permissions import IsAuthenticated
 
-
 class FavoriteModelViewSet(mixins.CreateModelMixin,
                    mixins.RetrieveModelMixin,
                    mixins.DestroyModelMixin,
@@ -22,4 +21,3 @@ class FavoriteModelViewSet(mixins.CreateModelMixin,
         queryset = super().get_queryset()
         queryset = queryset.filter(owner=self.request.user)
         return queryset
-
