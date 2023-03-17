@@ -19,11 +19,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
-<<<<<<< HEAD
     path('swagger/', schema_view.with_ui('swagger')),
-=======
-    path('ticket/', include('ticket.urls')),
->>>>>>> fc6d09d457f87d025421b60ac145a0f38a6188fd
     path('category/', include('category.urls')),
     path('feedback/', include('feedback.urls')),
     path('ticket/', include('ticket.urls')),
