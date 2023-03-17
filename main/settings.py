@@ -41,16 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #modules
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_yasg',
 
     # my apps
     'account',
+    'ticket',
     'category',
     'event',
     'feedback',
-    'ticket',
 ]
 
 MIDDLEWARE = [
@@ -152,6 +153,8 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR /'media/'
+
+
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
