@@ -6,7 +6,8 @@ from rest_framework.views import APIView
 
 from category.models import Category
 from ticket.models import Ticket
-from ticket.serializers import TicketSerializer, CategorySerializer
+from ticket.serializers import TicketSerializer
+from category.serializers import CategorySerializer
 from ticket.tasks import big_function
 
 class CategoryAPIView(viewsets.ModelViewSet):

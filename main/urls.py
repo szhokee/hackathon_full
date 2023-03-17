@@ -21,6 +21,7 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger')),
     path('category/', include('category.urls')),
     path('feedback/', include('feedback.urls')),
+    path('ticket/', include('ticket.urls')),
     # path('ticket/', include('ticket.urls')),
       
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
