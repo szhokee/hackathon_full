@@ -3,11 +3,11 @@ from rest_framework.routers import DefaultRouter
 from feedback.views import FavoriteModelViewSet
 
 router = DefaultRouter()
-router.register('', FavoriteModelViewSet)
+router.register('favorite', FavoriteModelViewSet)
 
 urlpatterns = [
-    path('favorite/', include(router.urls)),
     path('rating/', include(router.urls)),
-    path('like/', include(router.urls))
+    path('like/', include(router.urls)),
+    path('', include(router.urls))
 ]
 # urlpatterns += router.urls

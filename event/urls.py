@@ -7,6 +7,6 @@ router = DefaultRouter()
 router.register('events', EventModelViewSet)
 
 urlpatterns = [
-    path('event/', EventModelViewSet.as_view({'get':'list', 'post':'create'})),
+    # path('event/', EventModelViewSet.as_view({'get':'list', 'post':'create'})),
     path('', include(router.urls))
 ]

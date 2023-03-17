@@ -7,15 +7,11 @@ from rest_framework.views import APIView
 
 from category.models import Category
 from ticket.models import Ticket
-<<<<<<< HEAD
-from ticket.serializers import TicketSerializer
+
 from category.serializers import CategorySerializer
-=======
 
 from ticket.serializers import TicketSerializer
->>>>>>> fc6d09d457f87d025421b60ac145a0f38a6188fd
 from ticket.tasks import big_function
-from category.serializers import CategorySerializer
 
 class CategoryAPIView(viewsets.ModelViewSet):
     queryset = Category.objects.all()
