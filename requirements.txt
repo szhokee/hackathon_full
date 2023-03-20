@@ -4,13 +4,13 @@ psycopg2-binary
 python-decouple
 pillow
 djangorestframework-simplejwt
+drf-yasg
+
 dj-config-url 
 
 django-filter
-pillow
-drf-yasg
 
 django-cors-headers
 
-redis
 celery
+redis
