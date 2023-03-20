@@ -4,6 +4,7 @@ from ticket.tasks import send_ticket_confirmation_code
 
 class TicketSerializer(serializers.ModelSerializer):
     owner = serializers.EmailField(required=False)
+    
     class Meta:
         model = Ticket
         fields = '__all__'

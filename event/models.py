@@ -10,6 +10,7 @@ class Event(models.Model):
         on_delete=models.CASCADE,
         related_name='events'
     )
+
     title = models.CharField(max_length=50)
     time = models.DateTimeField(auto_now_add=True)
     amount = models.PositiveIntegerField(default=10)
