@@ -5,12 +5,15 @@ from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from event.serializers import EventSerializer
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 
 class CustomPagination(PageNumberPagination):
     page_size = 10
     page_size_query_param = 'page_size'
     max_page_size = 1000
 
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class EventModelViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
