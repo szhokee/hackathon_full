@@ -11,7 +11,7 @@ class Event(models.Model):
         related_name='events'
     )
     title = models.CharField(max_length=50)
-    time = models.DateTimeField()
+    time = models.DateTimeField(auto_now_add=True)
     amount = models.PositiveIntegerField(default=10)
     duration = models.IntegerField()
     geo = models.CharField(max_length=100)
