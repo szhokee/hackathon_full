@@ -15,6 +15,9 @@ git:
 	git add .
 	git commit -m 'comment'
 	git push origin iman
+
+pull:
+	git pull origin master
 	
 celery_beat:
 	celery -A main beat
