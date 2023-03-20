@@ -24,7 +24,7 @@ urlpatterns = [
     path('category/', include('category.urls')),
     path('event/', include('ticket.urls')),
     path('feedback/', include('feedback.urls')),
-    path('ticket/', include('ticket.urls'))      
+    path('ticket/', include('ticket.urls')),
 
     path('api/v1/account/', include('account.urls')),
     path('api/v1/ticket/', include('ticket.urls')),

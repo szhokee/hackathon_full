@@ -38,12 +38,3 @@ class ForgotPasswordCompleteAPIView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.set_new_password()
         return Response('Пароль успешно изменен')
-<<<<<<< HEAD
-    
-
-
-#fjkgnlbkdjnbidfkjbndifkjbngdikjnbikjnbtrkgdnirtvjkdfnvitjkdfngvijkgdfngirtkjdfgnrvgjkdf
-
-#765473658346758347653476548
-=======
->>>>>>> bbfe22a2d6565db7c2444630fcaa5a2943f308c7

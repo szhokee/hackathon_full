@@ -50,15 +50,10 @@ INSTALLED_APPS = [
 
     # my apps
     'account',
-<<<<<<< HEAD
-    'feedback',
-    
-=======
     'ticket',
     'category',
     'event',
     'feedback',
->>>>>>> bbfe22a2d6565db7c2444630fcaa5a2943f308c7
 ]
 
 MIDDLEWARE = [

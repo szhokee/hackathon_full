@@ -7,7 +7,7 @@ class LikeSerializer(serializers.ModelSerializer):
         model = Like
         Fields = '__all__'
 
-class FavoriteSeriaLizer(serializers.ModelSerializer):
+class FavoriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Favorite
