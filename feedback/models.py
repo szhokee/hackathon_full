@@ -22,6 +22,7 @@ class Like(models.Model):
     def __str__(self) -> str:
         return f'{self.owner} liked - {self.event.title}'
 
+
 class Rating(models.Model):
 
     owner = models.ForeignKey(
@@ -52,5 +53,22 @@ class Favorite(models.Model):
         Event, 
         on_delete=models.CASCADE, related_name='favorites'
     )
+
     def __str__(self):
         return f'{self.owner} - {self.event.title}'
+    
+
+class Comment(models.Model):
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE, related_name='comments'
+    )
+    event = models.ForeignKey(
+        Event,
+        on_delete=models.CASCADE, related_name='comments'
+    )
+    comment = models.TextField()
+   
+    def __str__(self):
+        return f'{self.owner} - {self.event.title}'
+
