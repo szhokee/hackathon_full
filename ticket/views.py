@@ -1,126 +1,30 @@
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
-from rest_framework.response import Response
-from rest_framework import status, generics, viewsets, mixins
-from rest_framework.views import APIView
-
-from category.models import Category
+from rest_framework.viewsets import ModelViewSet
 from ticket.models import Ticket
-
-from category.serializers import CategorySerializer
-
 from ticket.serializers import TicketSerializer
-from ticket.tasks import big_function
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
+from rest_framework.generics import get_object_or_404
+from rest_framework.response import Response
+from rest_framework import status
 
-class CategoryAPIView(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-
-@api_view(['GET'])
-def get_product(request):
-    """
-    Get all product
-    """
-    products = Ticket.objects.all()
-    serializer = TicketSerializer(products, many=True)
-    # print(serializer.data)
-    return Response(serializer.data)
-
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def post_product(request):
-    # print(request.data)
-    serializer = TicketSerializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
-    serializer.save(owner=request.user)
-
-    return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-class TicketListGenericView(generics.ListAPIView):
+class TicketOrderModelViewset(ModelViewSet):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
     
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(owner=self.request.user)
+        return queryset
 
-class TicketCreateGenericView(generics.CreateAPIView):
-    serializer_class = TicketSerializer
-    permission_classes = [IsAuthenticated]
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
-
-#GENERIIIC
-
-class TicketListCreateGenericView(generics.ListCreateAPIView):
-    queryset = Ticket.objects.all()
-    serializer_class = TicketSerializer
-    permission_classes = [IsAuthenticated]
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
-
-class TicketAPIView(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        products = Ticket.objects.all()
-        serializer = TicketSerializer(products, many=True)
-        return Response(serializer.data)
-        # return Response('geet')
-
-    def post(self, request):
-        serializer = TicketSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(owner=request.user)
-
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-        # return Response('pooost')
-
-#Viewset
-
-class TicketViewSet(viewsets.ViewSet):
-    def list(self, request):                 #get
-        product = Ticket.objects.all()
-        serializer = TicketSerializer(product, many=True)
-        return Response(serializer.data)
-
-
-    def create(self, request):                #post
-        serializer = TicketSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(owner=request.user)
-
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-
-
-#MODELVIEWSET
-
-class TicketModelViewSet(viewsets.ModelViewSet):
-    queryset = Ticket.objects.all()
-    serializer_class = TicketSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
-
-
-
-#Mixin
-
-class TicketMixin(mixins.CreateModelMixin,
-                   mixins.RetrieveModelMixin,
-                #    mixins.UpdateModelMixin,
-                #    mixins.DestroyModelMixin,
-                   mixins.ListModelMixin,
-                   viewsets.GenericViewSet):
-    
-    queryset = Ticket.objects.all()
-    serializer_class = TicketSerializer
-
-@api_view(['GET'])
-def get_hello(request):
-    big_function.delay()
-    # import time 
-    # time.sleep(10)
-    return Response('HELLO!!!')
+class TicketConfirmAPIView(APIView):
+    def get(self, request, code):
+        ticket = get_object_or_404(Ticket, activation_code=code)
+        if not ticket.confirm:
+            ticket.confirm = True
+            ticket.save(update_fields=['confirm', 'activation_code'])
+            return Response({'message': 'Successful confirmation of your order!'}, status=status.HTTP_200_OK)
+        return Response({'message': 'You have already confirmed your order'}, status=status.HTTP_400_BAD_REQUEST)
