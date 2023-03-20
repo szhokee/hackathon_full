@@ -4,11 +4,8 @@ from event.views import *
 
 router = DefaultRouter()
 
-router.register('events', EventModelViewSet)
-
+router.register('event', EventModelViewSet)
 
 urlpatterns = [
-    # path('event/', EventModelViewSet.as_view({'get':'list', 'post':'create'})),
     path('', include(router.urls))
 ]
-

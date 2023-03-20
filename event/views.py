@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from category.models import Event
+from event.models import Event
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
-from category.serializers import EventSerializer
+from event.serializers import EventSerializer
 
 class CustomPagination(PageNumberPagination):
     page_size = 10
