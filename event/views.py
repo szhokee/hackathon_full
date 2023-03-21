@@ -18,9 +18,6 @@ class EventModelViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     pagination_class = CustomPagination
     filter_backends = [SearchFilter, OrderingFilter]
-    filterset_fields = ['owner', 'title']
+    filterset_fields = ['title']
     search_fields = ['title']
-    ordering_fields = ['id', 'owner']
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+    ordering_fields = ['id']
