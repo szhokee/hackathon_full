@@ -2,15 +2,12 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from category.models import Category
 
-User = get_user_model()
-
 class Event(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
         related_name='events'
     )
-
     title = models.CharField(max_length=50)
     time = models.DateTimeField(auto_now_add=True)
     amount = models.PositiveIntegerField(default=10)
