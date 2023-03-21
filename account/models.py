@@ -10,7 +10,7 @@ class UserManager(BaseUserManager):
         email = self.normalize_email(email)
         
         user = self.model(email=email, **extra_fields)
-        user.password = make_password(password)  # '1' -> sdjfhue8rb3457fgidysuif
+        user.password = make_password(password)
         user.create_activation_code()
         user.save(using=self._db)
         return user

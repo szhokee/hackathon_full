@@ -4,8 +4,8 @@ from event.views import *
 
 router = DefaultRouter()
 
-router.register('event', EventModelViewSet)
+router.register('', EventModelViewSet)
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('event/', include(router.urls))
 ]
