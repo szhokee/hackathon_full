@@ -1,9 +1,37 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework import mixins
-from feedback.models import Favorite
-from feedback.serializers import FavoriteSerializer
+from feedback.models import Favorite, Like, Rating, Comment
+from feedback.serializers import FavoriteSerializer, LikeSerializer, RatingSerializer, CommentSerializer
 from rest_framework.permissions import IsAuthenticated
+
+
+class LikeModelViewSet(ModelViewSet):
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+class RatingModelViewSet(ModelViewSet):
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+    
+
+class CommentModelViewSet(ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+
 
 class FavoriteModelViewSet(mixins.CreateModelMixin,
                    mixins.RetrieveModelMixin,
