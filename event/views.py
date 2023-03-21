@@ -2,7 +2,6 @@ from django.shortcuts import render
 from event.models import Event
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
-# from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from event.serializers import EventSerializer
 from django.views.decorators.cache import cache_page
