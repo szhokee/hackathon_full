@@ -5,11 +5,6 @@ from category.models import Category
 User = get_user_model()
 
 class Event(models.Model):
-    owner = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='events'
-    )
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
@@ -17,7 +12,8 @@ class Event(models.Model):
     )
 
     title = models.CharField(max_length=50)
-    time = models.DateTimeField()
+    time = models.DateTimeField(auto_now_add=True)
+    amount = models.PositiveIntegerField(default=10)
     duration = models.IntegerField()
     geo = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
