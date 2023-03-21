@@ -6,30 +6,30 @@ from feedback.serializers import FavoriteSerializer, LikeSerializer, RatingSeria
 from rest_framework.permissions import IsAuthenticated
 
 
-# class LikeModelViewSet(ModelViewSet):
-#     queryset = Like.objects.all()
-#     serializer_class = LikeSerializer
-#     permission_classes = [IsAuthenticated]
+class LikeModelViewSet(ModelViewSet):
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
+    permission_classes = [IsAuthenticated]
 
-#     def perform_create(self, serializer):
-#         return serializer.save(owner=self.request.user)
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
 
-# class RatingModelViewSet(ModelViewSet):
-#     queryset = Rating.objects.all()
-#     serializer_class = RatingSerializer
-#     permission_classes = [IsAuthenticated]
+class RatingModelViewSet(ModelViewSet):
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
+    permission_classes = [IsAuthenticated]
 
-#     def perform_create(self, serializer):
-#         return serializer.save(owner=self.request.user)
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
     
 
-# class CommentModelViewSet(ModelViewSet):
-#     queryset = Comment.objects.all()
-#     serializer_class = CommentSerializer
-#     permission_classes = [IsAuthenticated]
+class CommentModelViewSet(ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated]
 
-#     def perform_create(self, serializer):
-#         return serializer.save(owner=self.request.user)
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
 
 
 

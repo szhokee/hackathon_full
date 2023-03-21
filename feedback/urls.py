@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from feedback.views import FavoriteModelViewSet
 
 router = DefaultRouter()
-router.register('favorite', FavoriteModelViewSet)
+router.register('', FavoriteModelViewSet)
 
 urlpatterns = [
     path('rating/', include(router.urls)),
