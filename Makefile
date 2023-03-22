@@ -11,6 +11,9 @@ super:
 test:
 	python3 manage.py test
 
+pip:
+	pip install -r requirements.txt
+
 git:
 	git add .
 	git commit -m 'comment'
