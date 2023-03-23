@@ -21,10 +21,9 @@ class FavoriteSerializer(serializers.ModelSerializer):
         model = Favorite
         fields = '__all__'     
 
-
 class CommentSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.email')
 
     class Meta:
         model = Comment
         fields = '__all__'
-

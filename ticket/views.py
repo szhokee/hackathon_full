@@ -13,11 +13,11 @@ class TicketOrderModelViewset(ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(owner=self.request.user.id)
     
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(owner=self.request.user)
+        queryset = queryset.filter(owner=self.request.user.id)
         return queryset
 
 class TicketConfirmAPIView(APIView):
